@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mililtary Tac Light</title>
+    <style>
+    	* {
+    		padding: 0;
+    		margin: 0;
+    	}
+    </style>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+
+    $(function() {
+
+      pixel();
+
+      function pixel() {
+        var s2 = get_url_parameter('s2');
+        var uuid = guid();
+        // http://localhost:3000/api/flashlight?s2=100&uuid=100
+        var url = 'https://dashboard.fetchdeals.com/api/flashlight?s2=' + s2 + '&uuid=' + uuid;
+        $.get(url, function(data) {
+          console.log(data);
+        });
+      }
+
+      function guid() {
+          function s4() {
+              return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+      }
+
+      /**
+       * Get url parameters. Used to pass data from the url to the program.
+       * url: google.com/?name=jeremy&email=hey@test.com
+       * name: the url parameter you want to get. email
+       * return: The value associated with the url param. Otherwise null. For the name 'email', it would return email=hey@test.com.
+       */
+      function get_url_parameter(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+              results = regex.exec(location.search);
+          return results == null ? "" : decodeURIComponent(results[1].replace(/\\+/g, " "));
+      }
+
+    });
+
+
+    </script>
+  </head>
+  <body>
+  	<iframe src='https://militarytaclight.clickfunnels.com/thank-you' width='100%' height='1000' frameborder='0'></iframe>
+  </body>
+</html>
